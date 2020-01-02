@@ -1,5 +1,4 @@
-Delayed::Job.class_eval do
-
+class DelayedJobDecorator
   def state
     return 'failed' unless failed_at.blank?
     return 'running' unless locked_at.nil?
@@ -16,3 +15,5 @@ Delayed::Job.class_eval do
     j.save
   end
 end
+
+Delayed::Job.prepend DelayedJobDecorator
