@@ -1,4 +1,4 @@
-class DelayedJobDecorator
+module DelayedJobDecorator
   def state
     return 'failed' unless failed_at.blank?
     return 'running' unless locked_at.nil?
